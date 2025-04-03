@@ -1,0 +1,18 @@
+# Byte-compiled files
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Jupyter and environment files
+.ipynb_checkpoints/
+.env/
+.venv/
+.envrc
+*.sqlite3
+*.log
+
+# VS Code / IDEs
+.vscode/
+.idea/
