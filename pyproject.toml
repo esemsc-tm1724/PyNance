@@ -14,11 +14,11 @@ readme = "README.md"
 requires-python = ">=3.8"
 
 dependencies = [
-  "numpy==1.21.6",
-  "pandas==1.4.4",
-  "matplotlib==3.5.3",
-  "scikit-learn==1.6.1",
-  "yfinance==0.2.26"
+  "numpy>=1.23",
+  "pandas",
+  "matplotlib",
+  "scikit-learn",
+  "yfinance>=0.2.55"
 ]
 
 [project.urls]

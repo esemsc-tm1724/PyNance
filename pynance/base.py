@@ -58,14 +58,53 @@ class TradingStrategy:
         self.data[f"SMA {SMA}"] = self.data["Close"].rolling(SMA).mean()
         self.sma_list.append(f"SMA {SMA}")
         return
+    
+    def plot_close(self, title, show_SMA=False):
 
-    def plot_returns(self, title, show_SMA=False):
+        """Plot historical close price data and technical indicators
+    
+        Args:
+            title (str): Title of the plot.
+            show_SMA (bool): Choice to plot the SMA's.
+        """
+
+        plt.figure(figsize=(14, 6)).add_axes([0.1, 0.1, 0.85, 0.8])
+        plt.plot(
+            self.data.index,
+            self.data["Close"],
+            label="Closing Price",
+            linewidth=2,
+            color="red",
+        )
+
+        if show_SMA:
+            for sma in self.sma_list:
+                plt.plot(
+                self.data.index,
+                self.data[f"{sma}"],
+                label=f"{sma}",
+                linewidth=2,
+                linestyle="--",
+                )
+
+
+        plt.title(title, fontsize=16)
+        plt.xlabel("Date")
+        plt.ylabel("Close Price")
+        plt.grid(True, linestyle="--", alpha=0.5)
+        plt.legend()
+        plt.tight_layout()
+        plt.show()
+        return
+
+
+
+    def plot_returns(self, title):
 
         """Plot cumulative market and strategy returns.
 
         Args:
             title (str): Title of the plot.
-            show_SMA (bool): Whether to show added SMAs on the plot.
         """
 
         plt.figure(figsize=(14, 6)).add_axes([0.1, 0.1, 0.85, 0.8])
