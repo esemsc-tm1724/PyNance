@@ -1,0 +1,20 @@
+Metadata-Version: 2.4
+Name: pynance
+Version: 0.1.0
+Summary: A Python framework for backtesting technical and ML-based trading strategies.
+Author-email: Tom Macgillivray <tom.macgillivray@outlook.com>
+License: MIT
+Project-URL: Homepage, https://github.com/esemsc-tm1724/PyNance.git
+Project-URL: Documentation, N/A
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy==1.21.6
+Requires-Dist: pandas==1.4.4
+Requires-Dist: matplotlib==3.5.3
+Requires-Dist: scikit-learn==1.6.1
+Requires-Dist: yfinance==0.2.26
+Dynamic: license-file
+
+# PyNance
+A tool kit for backtesting trading strategies on historical data. 

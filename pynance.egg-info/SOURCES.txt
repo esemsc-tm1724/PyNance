@@ -1,0 +1,17 @@
+LICENSE
+README.md
+pyproject.toml
+setup.py
+pynance/__init__.py
+pynance/base.py
+pynance/mean_reversion.py
+pynance/momentum.py
+pynance/regression.py
+pynance/utils.py
+pynance.egg-info/PKG-INFO
+pynance.egg-info/SOURCES.txt
+pynance.egg-info/dependency_links.txt
+pynance.egg-info/requires.txt
+pynance.egg-info/top_level.txt
+tests/test_momentum.py
+tests/test_regression.py

@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pynance"
+version = "0.1.0"
+description = "A Python framework for backtesting technical and ML-based trading strategies."
+authors = [
+  { name="Tom Macgillivray", email="tom.macgillivray@outlook.com" }
+]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.8"
+
+dependencies = [
+  "numpy==1.21.6",
+  "pandas==1.4.4",
+  "matplotlib==3.5.3",
+  "scikit-learn==1.6.1",
+  "yfinance==0.2.26"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/esemsc-tm1724/PyNance.git"
+"Documentation" = "N/A"
