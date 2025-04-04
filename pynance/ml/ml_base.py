@@ -12,27 +12,44 @@ class MLStrategy(TradingStrategy):
         self.lags = lags
 
 
-    def train_model(self, model):
+    def train_model(self, model, train=0.7):
 
         """
-        Train a machine learning model using lagged log returns as features.
+        Performs walk-forward validation to simulate live trading.
 
-        Returns:
-        - model : Trained model.
+        Parameters:
+        - model: Any sklearn-like model with fit/predict methods.
+        - train_size (int): Initial number of observations to train on.
+
+        Populates:
+        - self.data['Predicted Returns']: One-step-ahead predicted returns.
         """
 
+        predictions = []
+        true_returns = []
 
-        # Turn all the lag columns into a numpy array of shape (n_samples, lags)
-        self.X =  self.data[[f'Lag {lag}' for lag in range(1, self.lags + 1)]].values
+        train_size = int(len(self.data) * train)
 
-        # Extract the returns as the targey variable
-        self.y = self.data['Log Returns']
+        for i in range(train_size, len(self.data)):
+            # Slice up to current day for training
+            X_train = self.data[[f"Lag {lag}" for lag in range(1, self.lags + 1)]].iloc[i - train_size:i].values
+            y_train = self.data['Log Returns'].iloc[i - train_size:i].values
 
-        # Fit the model to the data
-        model.fit(self.X, self.y)
+            # Train model
+            model.fit(X_train, y_train)
 
-        # Return the trained model
-        return model
+            # Predict 1 day ahead
+            X_test = self.data[[f"Lag {lag}" for lag in range(1, self.lags + 1)]].iloc[i].values.reshape(1, -1)
+            pred = model.predict(X_test)[0]
+
+            predictions.append(pred)
+            true_returns.append(self.data['Log Returns'].iloc[i])
+
+        # Truncate the time series up to the point where the model starts predicting 
+        self.data = self.data.iloc[train_size:].copy()
+        self.data['Predicted Log Returns'] = predictions
+        # Recalculate market returns from the point the model starts predicting
+        self._calc_returns()
 
 
     def _generate_signals(self):
