@@ -37,6 +37,6 @@ class MLStrategy(TradingStrategy):
 
     def _generate_signals(self):
 
-         """Abstract method to generate trading signals. Should be implemented by subclasses."""
-         
+        """Abstract method to generate trading signals. Should be implemented by subclasses."""
+
         return NotImplementedError
