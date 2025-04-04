@@ -98,7 +98,6 @@ class TradingStrategy:
         return
 
 
-
     def plot_returns(self, title):
 
         """Plot cumulative market and strategy returns.

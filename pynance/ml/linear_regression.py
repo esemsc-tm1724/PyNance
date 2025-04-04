@@ -46,10 +46,7 @@ class LRStrategy(MLStrategy):
         and a short (-1) position when it is negative.
         """
 
-        # Use the model to predict the returns
-        self.data['Predicted Returns'] = self.model.predict(self.X)
-        
         # Generate signals from predicted returns
-        self.data['Position'] = np.sign(self.data['Predicted Returns'])
+        self.data['Position'] = np.sign(self.data['Predicted Log Returns'])
 
 
