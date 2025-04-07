@@ -51,6 +51,7 @@ class MLStrategy(TradingStrategy):
         # Recalculate market returns from the point the model starts predicting
         self._calc_returns()
 
+    
 
     def _generate_signals(self):
 
