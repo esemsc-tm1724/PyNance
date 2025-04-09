@@ -51,7 +51,11 @@ class MLStrategy(TradingStrategy):
         # Recalculate market returns from the point the model starts predicting
         self._calc_returns()
 
-    
+    def evaluate_model(self):
+
+        """Method to evaluate machine learning models using a range of metrics"""
+
+        
 
     def _generate_signals(self):
 
